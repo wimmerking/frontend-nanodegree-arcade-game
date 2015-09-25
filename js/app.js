@@ -9,7 +9,7 @@ var Enemy = function(x, y, p) {
 
 
     this.x = x * 100;
-    this.y = (y * 83) - (83 / 3);
+    this.y = (y * 85) - (85 / 3);
     this.speed = p;
 }
 
@@ -43,13 +43,13 @@ Enemy.prototype.render = function() {
  * @param {int} x is a int which should contain x-asis coordinate.
  * @param {int} y is a int which should contain x-asis coordinate.
  */
-var Player = function(X, Y) {
+var Player = function(x, y) {
 
 
-    this.x = X * 101;
-    this.y = (Y * 83) - (83 / 3);
+    this.x = x * 101;
+    this.y = (y * 87) - (87 / 3);
     this.score = 0;
-    this.lifes = 5;
+    this.lives = 5;
 
     // The image/sprite for our players
     this.sprite = 'images/char-horn-girl.png';
@@ -74,21 +74,21 @@ Player.prototype.render = function() {
 
 function updateScore(obj) {
     //white background, otherwise overwritten
-    ctx.fillStyle= 'white';
+    ctx.fillStyle= 'gray';
     ctx.fillRect(0, 0, 505, 45);
     ctx.fillStyle = 'black';
     ctx.font = "36px Arial";
     ctx.textAlign = "left";
 
     var gradient=ctx.createLinearGradient(0,0,505,0);
-    gradient.addColorStop("0","magenta");
+    gradient.addColorStop("0","black");
     gradient.addColorStop("0.5","blue");
-    gradient.addColorStop("1.0","red");
+    gradient.addColorStop("1.0","green");
     ctx.fillStyle=gradient;
 
-    ctx.fillText("SCORE: " + player.score, 0, 40);
+    ctx.fillText("Score: " + player.score, 0, 40);
     ctx.textAlign = "right";
-    ctx.fillText("Lifes: " + player.lifes, 505, 40);
+    ctx.fillText("Lives: " + player.lives, 505, 40);
 }
 
 //function for keyboard controls
@@ -147,12 +147,12 @@ function checkCollision (X, Y, arrayObjs) {
 function restartPlayer(obj) {
     obj.x = 2 * 101;
     obj.y = (5 * 83) - (83 / 3);
-    obj.lifes -= 1;
+    obj.lives -= 1;
 
-    if (obj.lifes <= 0) {
-        //finish gabe, stop engine
+    if (obj.lives <= 0) {
+        //stop game, stop engine
         obj.score = 0;
-        obj.lifes = 5;
+        obj.lives = 5;
 
     }
 }
@@ -166,7 +166,7 @@ var allEnemies = [];
 for (var row = 1; row < 4; row++) {
     var numberEnemies = 5 - row;
     for (var i = 1; i < numberEnemies; i++) {
-        allEnemies.push(new Enemy(numberEnemies - row, row, numberEnemies * row * 11))
+        allEnemies.push(new Enemy(numberEnemies - row, row, numberEnemies * row * 12))
     }
 }
 
