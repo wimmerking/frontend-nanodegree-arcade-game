@@ -128,7 +128,7 @@ function checkCollision (X, Y, arrayObjs) {
     for (obj in arrayObjs) {
         var objX = (arrayObjs[obj].x / 101).toFixed(0);
         var objY = (arrayObjs[obj].y / 83).toFixed(0);
-        //to check the collision, first I checked in which square is my player and if one of the enemy is there or al least entering there
+        //checking collision by checking character placement as well as enemies
 
         if ((objX == (X / 101).toFixed(0)) && (objY == (Y / 83).toFixed(0))) {
             //collision
