@@ -89,6 +89,7 @@ function updateScore(obj) {
     ctx.fillText("Score: " + player.score, 0, 40);
     ctx.textAlign = "right";
     ctx.fillText("Lives: " + player.lives, 505, 40);
+    ctx.fillText("Game", 305, 40)
 }
 
 //function for keyboard controls
@@ -183,3 +184,5 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
