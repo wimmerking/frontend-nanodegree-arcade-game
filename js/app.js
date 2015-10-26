@@ -49,7 +49,7 @@ var Player = function(x, y) {
     this.x = x * 101;
     this.y = (y * 87) - (87 / 3);
     this.score = 0;
-    this.lives = 5;
+    this.lives = 3;
 
     // The image/sprite for our players
     this.sprite = 'images/char-horn-girl.png';
@@ -153,7 +153,7 @@ function restartPlayer(obj) {
     if (obj.lives <= 0) {
         //stop game, stop engine
         obj.score = 0;
-        obj.lives = 5;
+        obj.lives = 3;
 
     }
 }
