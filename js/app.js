@@ -77,7 +77,7 @@ function updateScore(obj) {
     ctx.fillStyle= 'gray';
     ctx.fillRect(0, 0, 505, 45);
     ctx.fillStyle = 'black';
-    ctx.font = "36px Arial";
+    ctx.font = "34px Arial";
     ctx.textAlign = "left";
 
     var gradient=ctx.createLinearGradient(0,0,505,0);
@@ -89,7 +89,9 @@ function updateScore(obj) {
     ctx.fillText("Score: " + player.score, 0, 40);
     ctx.textAlign = "right";
     ctx.fillText("Lives: " + player.lives, 505, 40);
-    ctx.fillText("Game", 305, 40)
+
+    ctx.font= "24px Arial";
+    ctx.fillText("FROGGERISH", 335, 40);
 }
 
 //function for keyboard controls
