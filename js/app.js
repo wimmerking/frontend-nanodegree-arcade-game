@@ -11,7 +11,7 @@ var Enemy = function(x, y, p) {
     this.x = x * 100;
     this.y = (y * 85) - (85 / 3);
     this.speed = p;
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -26,13 +26,13 @@ Enemy.prototype.update = function(dt) {
     } else {
         this.x = -100;
     }
-}
+};
 
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -53,7 +53,7 @@ var Player = function(x, y) {
 
     // The image/sprite for our players
     this.sprite = 'images/char-horn-girl.png';
-}
+};
 
 // Update the player's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -63,34 +63,34 @@ Player.prototype.update = function() {
     if (collision) {
         restartPlayer(this);
     }
-}
+};
 
 // Draw the player on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
     updateScore(this);
-}
+};
 
 function updateScore(obj) {
     //white background, otherwise overwritten
-    ctx.fillStyle= 'gray';
+    ctx.fillStyle = 'gray';
     ctx.fillRect(0, 0, 505, 45);
     ctx.fillStyle = 'black';
     ctx.font = "34px Arial";
     ctx.textAlign = "left";
 
-    var gradient=ctx.createLinearGradient(0,0,505,0);
-    gradient.addColorStop("0","black");
-    gradient.addColorStop("0.5","blue");
-    gradient.addColorStop("1.0","green");
-    ctx.fillStyle=gradient;
+    var gradient = ctx.createLinearGradient(0, 0, 505, 0);
+    gradient.addColorStop("0", "black");
+    gradient.addColorStop("0.5", "blue");
+    gradient.addColorStop("1.0", "green");
+    ctx.fillStyle = gradient;
 
     ctx.fillText("Score: " + player.score, 0, 40);
     ctx.textAlign = "right";
     ctx.fillText("Lives: " + player.lives, 505, 40);
 
-    ctx.font= "24px Arial";
+    ctx.font = "24px Arial";
     ctx.fillText("FROGGERISH", 335, 40);
 }
 
@@ -98,39 +98,41 @@ function updateScore(obj) {
 Player.prototype.handleInput = function(key) {
 
     switch (key) {
-    case 'left':
-        if ((this.x - 101) >= 0) {
-            this.x -= 101;
-        }
-        break;
-    case 'right':
-        if ((this.x + 101) < 505) {
-            this.x += 101;
-        }
-        break;
-    case 'up':
-        if ((this.y - 83) > 0) {
-            this.y -= 83;
-        }
-        else {
-            this.y = (5 * 83) - (83 / 3);
-            this.score += 100;
-        }
-        break;
-    case 'down':
-        if ((this.y + 83) < (5 * 83)) {
-            this.y += 83;
-        }
-        break;
-    default:
+        case 'left':
+            if ((this.x - 101) >= 0) {
+                this.x -= 101;
+            }
+            break;
+        case 'right':
+            if ((this.x + 101) < 505) {
+                this.x += 101;
+            }
+            break;
+        case 'up':
+            if ((this.y - 83) > 0) {
+                this.y -= 83;
+            } else {
+                this.y = (5 * 83) - (83 / 3);
+                this.score += 100;
+            }
+            break;
+        case 'down':
+            if ((this.y + 83) < (5 * 83)) {
+                this.y += 83;
+            }
+            break;
+        default:
     }
-}
+};
 
 
-function checkCollision (X, Y, arrayObjs) {
-    for (obj in arrayObjs) {
+function checkCollision(X, Y, arrayObjs) {
+    for (var obj in arrayObjs) {
         var objX = (arrayObjs[obj].x / 101).toFixed(0);
         var objY = (arrayObjs[obj].y / 83).toFixed(0);
+            if (objX.hasOwnProperty(objY)){
+                console.log(objX[objY]);
+        }
         //checking collision by checking character placement as well as enemies
 
         if ((objX == (X / 101).toFixed(0)) && (objY == (Y / 83).toFixed(0))) {
@@ -169,7 +171,7 @@ var allEnemies = [];
 for (var row = 1; row < 4; row++) {
     var numberEnemies = 5 - row;
     for (var i = 1; i < numberEnemies; i++) {
-        allEnemies.push(new Enemy(numberEnemies - row, row, numberEnemies * row * 12))
+        allEnemies.push(new Enemy(numberEnemies - row, row, numberEnemies * row * 12));
     }
 }
 
@@ -186,5 +188,3 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-
