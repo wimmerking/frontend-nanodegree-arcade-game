@@ -90,8 +90,8 @@ function updateScore(obj) {
     ctx.textAlign = "right";
     ctx.fillText("Lives: " + player.lives, 505, 40);
 
-    ctx.font = "24px Arial";
-    ctx.fillText("FROGGERISH", 335, 40);
+    ctx.font = "18px Arial";
+    ctx.fillText("FROGGERISH", 305, 40);
 }
 
 //function for keyboard controls
@@ -127,20 +127,15 @@ Player.prototype.handleInput = function(key) {
 
 
 function checkCollision(X, Y, arrayObjs) {
-    for (var obj in arrayObjs) {
-        var objX = (arrayObjs[obj].x / 101).toFixed(0);
-        var objY = (arrayObjs[obj].y / 83).toFixed(0);
-            if (objX.hasOwnProperty(objY)){
-                console.log(objX[objY]);
-        }
+    for (var i = 0, length = arrayObjs.length; i < length; i++) {
+        var objX = (arrayObjs[i].x / 101).toFixed(0);
+        var objY = (arrayObjs[i].y / 83).toFixed(0);
         //checking collision by checking character placement as well as enemies
 
         if ((objX == (X / 101).toFixed(0)) && (objY == (Y / 83).toFixed(0))) {
             //collision
             return true;
-
         }
-
     }
     return false;
 }
