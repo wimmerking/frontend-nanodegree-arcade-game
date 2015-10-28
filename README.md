@@ -1,6 +1,13 @@
-frontend-nanodegree-arcade-game
-===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+### Requirements to Play
+=======================
+*  Start a **Static Server** using Python's `SimpleHTTPServer`
 
-for self-checking their submission.
+### Playing the Game
+=======================
+
+*  Guide the the character through the tiles
+*  Commands are done with the up, down, left, right keys
+*  Avoid all enemy bugs and cross to the other side
+*  Points are added in 100s and 3 lives are given.
+*  When all lives are lost, the score is reset.
